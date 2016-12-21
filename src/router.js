@@ -3,28 +3,40 @@ import Vue from 'vue';
 import App from './app.vue';
 
 function initRouter(VueRouter) {
-  const Index = resolve => require(['./views/index.vue'], resolve);
-  const View01 = resolve => require(['./views/view01.vue'], resolve);
-  const View02 = resolve => require(['./views/view02.vue'], resolve);
+  const Index = r => require.ensure([],
+    () => r(require('./views/index.vue')), 'index');
+  const View01 = r => require.ensure([],
+    () => r(require('./views/view01.vue')), 'view01');
+  const View02 = r => require.ensure([],
+    () => r(require('./views/view02.vue')), 'view02');
 
   const routes = [{
     name: 'index',
     path: '/',
-    component: Index
+    component: Index,
+    meta: {}
   }, {
     name: 'view01',
     path: '/view01',
-    component: View01
+    component: View01,
+    meta: {}
   }, {
     name: 'view02',
     path: '/view02',
-    component: View02
+    component: View02,
+    meta: {}
   }];
 
   const router = new VueRouter({
-    mode: 'history',
+    mode: 'hash',
     base: __dirname,
-    routes
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+      return savedPosition || {
+        x: 0,
+        y: 0
+      };
+    }
   });
 
   new Vue(Vue.util.extend({

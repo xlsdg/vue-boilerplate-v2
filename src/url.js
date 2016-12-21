@@ -64,7 +64,10 @@ const getHref = (origin) => origin + urlConfig.root;
 // urlConfig.origin = urlConfig.protocol + '//' urlConfig.host;
 // urlConfig.href = urlConfig.origin + urlConfig.root;
 
-const apiUrl = getHref(getOrigin(getHost(domainConfig.api.hostName, domainConfig.api.port)));
+const apiUrl = getHref(getOrigin(getHost(
+  domainConfig.api.hostName,
+  domainConfig.api.port
+)));
 
 const urlUser = {
   'create': apiUrl + '/user/create',
