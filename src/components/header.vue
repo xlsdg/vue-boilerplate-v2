@@ -24,4 +24,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
+  .layout-header {
+    background: #404040;
+    width: 100%;
+    height: 64px;
+  }
 </style>

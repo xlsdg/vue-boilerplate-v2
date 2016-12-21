@@ -1,11 +1,5 @@
 <template>
-  <div class="layout-main">
-    <LytHeader></LytHeader>
-    <div class="layout-content">
-      <router-view></router-view>
-    </div>
-    <LytFooter></LytFooter>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script type="text/babel">
@@ -15,8 +9,6 @@
   export default {
     name: 'app',
     components: {
-      LytHeader: require('./components/header'),
-      LytFooter: require('./components/footer')
     },
     props: {
     },
@@ -112,16 +104,5 @@
     margin: 0;
     padding: 0;
     -webkit-text-size-adjust: none;
-  }
-
-  .layout-main {
-    min-height: 100%;
-    position: relative;
-  }
-
-  .layout-content {
-    width: 980px;
-    margin: 0 auto;
-    padding-bottom: 100px;
   }
 </style>

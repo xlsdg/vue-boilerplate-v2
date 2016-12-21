@@ -1,14 +1,15 @@
 <template>
-  <div class="view">
+  <LytMain class="view">
     <p>This is View 02!</p>
     <router-link to="/">Go to Index</router-link>
-  </div>
+  </LytMain>
 </template>
 
 <script type="text/babel">
   export default {
     name: 'view02',
     components: {
+      LytMain: require('../components/layout')
     },
     props: {
     },
