@@ -39,11 +39,15 @@ function initRouter(VueRouter) {
     }
   });
 
-  new Vue(Vue.util.extend({
-    router
-  }, App)).$mount('#app');
+  const app = new Vue({
+    router,
+    ...App
+  }).$mount('#app');
 
-  return router;
+  return {
+    app,
+    router
+  };
 }
 
 export {
