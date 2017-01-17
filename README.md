@@ -2,6 +2,12 @@
 
 > A Vue 2.0 project boilerplate
 
+## Usage
+
+``` bash
+$ git clone https://github.com/xlsdg/vue-boilerplate-v2.git && cd vue-boilerplate-v2 && npm i && npm run dev
+```
+
 ## Build Setup
 
 ``` bash
