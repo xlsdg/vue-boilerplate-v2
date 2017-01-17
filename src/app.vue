@@ -3,7 +3,6 @@
 </template>
 
 <script type="text/babel">
-  import 'normalize.css';
   import 'flex.css';
 
   export default {
@@ -12,7 +11,7 @@
     },
     props: {
     },
-    data: () => {
+    data() {
       return {
       };
     },

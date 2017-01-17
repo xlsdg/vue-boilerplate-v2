@@ -1,45 +1,54 @@
-import Vue from 'vue';
+import Axios from 'axios';
 
-function initHttp() {
-  Vue.http.options.credentials = true;
-  Vue.http.options.emulateHTTP = false;
-  Vue.http.options.emulateJSON = false;
-  Vue.http.options.xhr = {
-    'withCredentials': true
-  };
-}
+import {getTimeStamp} from './utils';
+
+const Request = Axios.create({
+  withCredentials: false
+  // headers: {
+  // }
+});
 
 function get(url, data) {
-  return Vue.http.get(url, data);
+  return Request.get(url, {
+    params: data
+  });
 }
 
 function post(url, data) {
-  return Vue.http.post(url, data);
+  return Request.post(url, data);
 }
 
-function procSrvError(res) {
-  console.error(res);
-  return;
+function throwSrvError(resp) {
+  const error = new Error(resp.statusText);
+  error.resp = resp;
+  throw error;
 }
 
-function procReqError(res) {
-  console.error(res);
-  return;
+function procReqError(err) {
+  return err;
 }
 
-function checkStatus(response) {
-  if ((response.status >= 200) && (response.status < 300)) {
-    return response;
+function checkStatus(resp) {
+  if ((resp.status >= 200) && (resp.status < 300)) {
+    return resp;
   }
-  return procSrvError(response);
+  return throwSrvError(resp);
+}
+
+function checkPermission(resp) {
+  return resp;
 }
 
 function procRequest(req) {
-  return req.then(checkStatus)
-    .catch(err => procReqError(err));
+  return req
+    .then(checkStatus)
+    .then(checkPermission)
+    .catch(procReqError);
 }
 
 function procGet(url, data) {
+  data = data || {};
+  data['_t'] = getTimeStamp();
   return procRequest(get(url, data));
 }
 
@@ -48,10 +57,6 @@ function procPost(url, data) {
 }
 
 export {
-  initHttp as init,
-  get,
-  post,
-  procRequest as procReq,
   procGet,
   procPost
 };

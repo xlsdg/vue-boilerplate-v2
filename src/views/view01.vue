@@ -13,7 +13,7 @@
     },
     props: {
     },
-    data: () => {
+    data() {
       return {
       };
     },

@@ -15,7 +15,7 @@
     },
     props: {
     },
-    data: () => {
+    data() {
       return {
       };
     },

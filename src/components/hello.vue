@@ -12,7 +12,7 @@
     },
     props: {
     },
-    data: () => {
+    data() {
       return {
         msg: 'Hello World!'
       };

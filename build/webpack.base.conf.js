@@ -24,6 +24,7 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'vue$': 'vue/dist/vue.common.js',
+      'moment': 'moment/min/moment-with-locales.min.js',
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components')
@@ -33,17 +34,22 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')]
   },
   module: {
+    noParse: [/moment-with-locales/], // http://code.oneapm.com/javascript/2015/07/07/webpack_performance_1/
     preLoaders: [
       {
         test: /\.vue$/,
         loader: 'eslint',
-        include: projectRoot,
+        include: [
+          path.join(projectRoot, 'src')
+        ],
         exclude: /node_modules/
       },
       {
         test: /\.js$/,
         loader: 'eslint',
-        include: projectRoot,
+        include: [
+          path.join(projectRoot, 'src')
+        ],
         exclude: /node_modules/
       }
     ],
@@ -55,7 +61,9 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        include: projectRoot,
+        include: [
+          path.join(projectRoot, 'src')
+        ],
         exclude: /node_modules/
       },
       {

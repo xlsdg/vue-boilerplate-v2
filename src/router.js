@@ -2,6 +2,9 @@ import Vue from 'vue';
 
 import App from './app.vue';
 
+let app = null;
+let router = null;
+
 function initRouter(VueRouter) {
   const Index = r => require.ensure([],
     () => r(require('./views/index.vue')), 'index');
@@ -27,7 +30,7 @@ function initRouter(VueRouter) {
     meta: {}
   }];
 
-  const router = new VueRouter({
+  router = new VueRouter({
     mode: 'hash',
     base: __dirname,
     routes,
@@ -39,7 +42,7 @@ function initRouter(VueRouter) {
     }
   });
 
-  const app = new Vue({
+  app = new Vue({
     router,
     ...App
   }).$mount('#app');
@@ -51,6 +54,7 @@ function initRouter(VueRouter) {
 }
 
 export {
-  initRouter as init
+  app,
+  router,
+  initRouter
 };
-
