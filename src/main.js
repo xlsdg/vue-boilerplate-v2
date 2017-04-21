@@ -1,10 +1,9 @@
 import Vue from 'vue';
-
 import VueX from 'vuex';
-Vue.use(VueX);
-
 import VueRouter from 'vue-router';
+import {initRouter} from './router';
+
+Vue.use(VueX);
 Vue.use(VueRouter);
 
-import {initRouter} from './router';
 initRouter(VueRouter);
