@@ -9,7 +9,7 @@
   export default {
     name: 'view02',
     components: {
-      LytMain: require('../components/layout/main')
+      LytMain: require('../components/layout/main').default
     },
     props: {
     },

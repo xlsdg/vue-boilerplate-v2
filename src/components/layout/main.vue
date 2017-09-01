@@ -12,8 +12,8 @@
   export default {
     name: 'Layout',
     components: {
-      LytHeader: require('./header'),
-      LytFooter: require('./footer')
+      LytHeader: require('./header').default,
+      LytFooter: require('./footer').default
     },
     props: {
     },

@@ -10,8 +10,8 @@
   export default {
     name: 'index',
     components: {
-      LytMain: require('../components/layout/main'),
-      Hello: require('../components/hello')
+      LytMain: require('../components/layout/main').default,
+      Hello: require('../components/hello').default
     },
     props: {
     },
